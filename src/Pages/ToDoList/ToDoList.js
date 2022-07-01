@@ -1,33 +1,44 @@
 import React, { useState } from 'react';
+import ToDoCreate from './ToDoCreate';
+import TodoEdit from './TodoEdit';
 
 const ToDoList = () => {
+
+    const [todoEditing, setTodoEditing] = useState(null);
     const [todos, setTodos] = useState([
         {
             'title': 'First Todo',
             'status': 'Pending'
-        },
-        {
-            'title': 'Second Todo',
-            'status': 'Done'
-        },
-        {
-            'title': 'Third Todo',
-            'status': 'Done'
-        },
-    ])
+        }
+    ]);
+    const addTodo = (todo) => { 
+        let newTodos = todos.slice();
+        newTodos.unshift(todo);
+        setTodos(newTodos);
+    }
+
+    const updateTodo = ({ index, todo }) => { 
+        let newTodos = todos.slice();
+        newTodos[index] = todo;
+        setTodos(newTodos);
+        setTodoEditing(null);
+    }
+
+    const deleteTodo = (index) => { 
+        let newTodos = todos.slice();
+        newTodos.splice(index, 1);
+        setTodos(newTodos);
+    }
     return (
         <div>
+            <ToDoCreate onCreateTodo={todo => addTodo(todo)} ></ToDoCreate>
             
-            <div class="overflow-x-auto w-full">
+            <div class="overflow-x-auto mt-5 px-24 flex w-full">
                 <table class="table w-full">
                     {/*  <!-- head --> */}
                     <thead>
                         <tr>
-                            <th>
-                                <label></label>
-                            </th>
                             <th>Title</th>
-                            <th>Details</th>
                             <th></th>
 
                         </tr>
@@ -37,35 +48,38 @@ const ToDoList = () => {
                         {
                 todos.map((todo, index) => ( 
                     <tr key={index}>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
                             <td>
                                 <div class="flex items-center space-x-3">
                                     <div>
-                                        <div class="font-bold">{todo.title}</div>
+                                        <div class="font-bold">
+                                        {
+                                            (todoEditing === index) ? 
+                                            <TodoEdit 
+                                                todo={todo}
+                                                index={index}
+                                                onUpdateTodo={value => updateTodo(value)}
+                                            />
+                                            :
+                                            <>
+                                                { todo.status === 'Pending' && todo.title }
+                                                { todo.status === 'Done' && <del>{todo.title }</del> }
+                                            </>
+                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                {todo.status}
+                            <button class="btn mx-2 btn-outline" onClick={() => setTodoEditing(index)}>edit</button>
+                                <button class="btn mx-2 btn-outline" onClick={() => deleteTodo(index)}>delete</button>
                             </td>
-                            <td>
-                                <button class="btn mx-2 btn-outline btn-xs">edit</button>
-                                <button class="btn mx-2 btn-outline btn-xs">delete</button>
-                            </td>
+                            
+                            
                         </tr>
 
                 ))
             }
-
-                        
-                        {/* <!-- row 2 --> */}
-
                     </tbody>
-
                 </table>
             </div>
         </div>

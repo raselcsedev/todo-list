@@ -9,7 +9,15 @@ const ToDoList = () => {
         {
             'title': 'First Todo',
             'status': 'Pending'
-        }
+        },
+        {
+            'title': 'Second Todo',
+            'status': 'Pending'
+        },
+        {
+            'title': 'Third Todo',
+            'status': 'Done'
+        },
     ]);
     const addTodo = (todo) => { 
         let newTodos = todos.slice();
@@ -32,9 +40,11 @@ const ToDoList = () => {
     return (
         <div>
             <ToDoCreate onCreateTodo={todo => addTodo(todo)} ></ToDoCreate>
-            
-            <div class="overflow-x-auto mt-5 px-24 flex w-full">
-                <table class="table w-full">
+            <div>
+            <h1 className='text-3xl mt-5 lg:px-24 font-bold text-success'>My Todo List</h1>
+            </div>
+            <div class="overflow-x-auto mt-5 lg:px-24 flex w-full">
+                <table class="table border w-full">
                     {/*  <!-- head --> */}
                     <thead>
                         <tr>

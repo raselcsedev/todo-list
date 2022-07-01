@@ -9,7 +9,7 @@ import ToDoList from './Pages/ToDoList/ToDoList';
 
 function App() {
   return (
-    <div >
+    <div className='p-6'>
       <Navbar></Navbar>
       <Routes>
       <Route path='/' element={<Home></Home>}></Route>

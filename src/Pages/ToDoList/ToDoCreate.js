@@ -19,7 +19,10 @@ const ToDoCreate = ({ onCreateTodo }) => {
     }
     return (
         <>
-        <div className='flex px-24 mt-5 w-full'>
+        <div>
+            <h1 className='text-3xl mt-5 lg:px-24 font-bold text-success'>Add New Task</h1>
+            </div>
+        <div className='flex lg:px-24 mt-5 w-full'>
             <input 
             type="text" 
             value={title} 

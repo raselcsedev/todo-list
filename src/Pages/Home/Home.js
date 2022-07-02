@@ -8,10 +8,6 @@ const Home = () => {
         <>
             <Calender></Calender>
             <ToDoList></ToDoList>
-
-            
-        
-
         </>
     );
 };

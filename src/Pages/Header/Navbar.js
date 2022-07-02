@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     const menuItems = 
         <>
-        <li className='mx-auto text-white font-bold lg:mr-4' ><Link to='/' >Home</Link></li>
-        <li className='mx-auto text-white font-bold lg:mr-4' ><Link to='completedTask' >Completed Task</Link></li>
-        <li className='mx-auto text-white font-bold lg:mr-4' ><Link to='todoList' >To-Do</Link></li>
-        <li className='mx-auto text-white font-bold lg:mr-4' ><Link to='calender' >Calender</Link></li>
+        <li className='mx-auto text-white lg:mr-4' ><Link to='/' >Home</Link></li>
+        <li className='mx-auto text-white lg:mr-4' ><Link to='completedTask' >Completed Task</Link></li>
+        <li className='mx-auto text-white lg:mr-4' ><Link to='todoList' >To-Do</Link></li>
+        <li className='mx-auto text-white lg:mr-4' ><Link to='calender' >Calender</Link></li>
         </>
     
     return (

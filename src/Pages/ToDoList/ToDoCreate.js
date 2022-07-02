@@ -10,7 +10,7 @@ const ToDoCreate = ({ onCreateTodo }) => {
             task: event.target.ratings.value,
             
         }
-        fetch('https://quiet-beach-66273.herokuapp.com', {
+        fetch('https://dudley-loonie-36952.herokuapp.com/', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',

@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ToDoCreate from './ToDoCreate';
 import TodoEdit from './TodoEdit';
 
 const ToDoList = () => {
+
+    const [tasks, setTasks] = useState([]);
+    useEffect(() => {
+        fetch('https://dudley-loonie-36952.herokuapp.com/')
+            .then(res => res.json())
+            .then(data => setTasks(data))
+    }, []);
 
     const [todoEditing, setTodoEditing] = useState(null);
     const [todos, setTodos] = useState([
